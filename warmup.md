@@ -1,17 +1,15 @@
-Here’s a breakdown of the course content into a **task-based actionable to-do list** while keeping close to the source you provided.
-
 ---
 
 ## **Section 1: Linux Setup and Environment** (1.5h)
 
 **Tasks:**
 
-1. **Read**: [Why GNU/Linux matters](https://www.gnu.org/gnu/why-gnu-linux.en.html).
-2. **Decide Install Method**:
+1. **Read**: [Why GNU/Linux matters](https://www.gnu.org/gnu/why-gnu-linux.en.html).✅
+2. **Decide Install Method**: ✅
 
    * Dual Boot
-   * Virtual Machine (VirtualBox)
-3. **If Dual Boot**:
+   * Virtual Machine (VirtualBox)✅
+3. **If Dual Boot**:✅
 
    * Backup all data.
    * Create bootable USBs for Ubuntu/Fedora.
@@ -26,17 +24,17 @@ Here’s a breakdown of the course content into a **task-based actionable to-do 
    * Install Guest Additions.
 5. **Post-Installation Setup**:
 
-   * Update system:
+   * Update system:✅
 
      ```bash
      sudo apt update && sudo apt upgrade
      ```
-   * Install development tools:
+   * Install development tools:✅
 
      ```bash
      sudo apt install python3-dev python3-pip python3-venv git curl wget vim build-essential
      ```
-   * Configure Git with name and email.
+   * Configure Git with name and email.✅
 
 ---
 
@@ -48,22 +46,25 @@ Here’s a breakdown of the course content into a **task-based actionable to-do 
 2. **Understand** filesystem structure: `/`, `/home`, `/etc`, `/var`, `/usr`, `/opt`, `/tmp`.
 3. **Practice File Permissions**:
 
-   * `chmod 755 script.py`
-   * `chmod 600 private_key`
-   * `ls -la`
+   - `chmod 755 script.py`
+   - `chmod 600 private_key`
+   - `ls -la`
+
 4. **Package Management**:
 
-   * Ubuntu/Debian: `sudo apt install package-name`
-   * Fedora/Red Hat: `sudo dnf install package-name`
+   - Ubuntu/Debian: `sudo apt install package-name`
+   - Fedora/Red Hat: `sudo dnf install package-name`
+
 5. **User Management**:
 
-   * `whoami`
-   * `sudo useradd -m -s /bin/bash newuser`
-   * `sudo usermod -aG sudo newuser`
+   - `whoami`
+   - `sudo useradd -m -s /bin/bash newuser`
+   - `sudo usermod -aG sudo newuser`
+
 6. **Exercises**:
 
-   * Create project folders with `mkdir -p`.
-   * Edit files, run `ps aux`, `htop`, and manage background processes.
+   - Create project folders with `mkdir -p`.
+   - Edit files, run `ps aux`, `htop`, and manage background processes.
 
 ---
 
@@ -87,16 +88,19 @@ Here’s a breakdown of the course content into a **task-based actionable to-do 
    ```bash
    python3 -m venv .venv
    ```
+
 2. Activate:
 
    ```bash
    source .venv/bin/activate
    ```
+
 3. Install packages:
 
    ```bash
    pip install requests numpy
    ```
+
 4. Freeze dependencies: `pip freeze > requirements.txt`
 5. Add `.venv` to `.gitignore`.
 
@@ -112,6 +116,7 @@ Here’s a breakdown of the course content into a **task-based actionable to-do 
    ```bash
    hatch new my-project
    ```
+
 3. Add dependencies in `pyproject.toml`.
 4. Create and manage multiple environments:
 
@@ -119,6 +124,7 @@ Here’s a breakdown of the course content into a **task-based actionable to-do 
    hatch env create test
    hatch run test:pytest
    ```
+
 5. Run linting and formatting with Hatch scripts.
 
 ---
@@ -166,11 +172,12 @@ Here’s a breakdown of the course content into a **task-based actionable to-do 
 2. Fetch Wikipedia page (`requests`).
 3. Parse HTML (`BeautifulSoup`) for:
 
-   * Full name
-   * Birth date and place
-   * Death date (if applicable)
-   * Occupation(s)
-   * First paragraph of biography
+   - Full name
+   - Birth date and place
+   - Death date (if applicable)
+   - Occupation(s)
+   - First paragraph of biography
+
 4. Store data in `@dataclass`.
 5. Use `Enum` for information types.
 6. Add error handling.

@@ -23,7 +23,10 @@
 5. **Post-Installation Setup**:  
    * Update system:  
      ```bash
-     sudo apt update && sudo apt upgrade
+     sudo apt updamkdir hello
+cd hello
+code .
+te && sudo apt upgrade
      ```
    * Install development tools:  
      ```bash

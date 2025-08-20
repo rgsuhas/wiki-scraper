@@ -1,0 +1,9 @@
+banan.txt
+generate.py
+my.txt
+peanuts.txt
+python-projects
+README.md
+requirements.txt
+start.py
+warmup.md

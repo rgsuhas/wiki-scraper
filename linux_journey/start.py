@@ -11,7 +11,6 @@ class BankAccount:
         self._balance = initial_balance  # Protected attribute
         self.__pin = None  # Private attribute
         self.transactions: List[dict] = []
-        self.account_type: Optional[str] = None
         self._log_transaction("Account created", initial_balance)
     
     @property

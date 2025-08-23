@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
+
 class BankAccount:
     """Professional bank account implementation."""
     
@@ -10,6 +11,7 @@ class BankAccount:
         self._balance = initial_balance  # Protected attribute
         self.__pin = None  # Private attribute
         self.transactions: List[dict] = []
+        self._account_type = ""  # Protected attribute
         self._log_transaction("Account created", initial_balance)
     
     @property
@@ -38,15 +40,29 @@ class BankAccount:
             'amount': amount,
             'balance': self._balance
         })
+        
     
     @classmethod
     def create_savings_account(cls, owner: str):
         """Factory method for savings accounts."""
         account = cls(owner, 100.0)  # Minimum balance
-        account.account_type = "Savings" # type: ignore
+        account.account_type = "Savings"  # Set account type
         return account
     
     @staticmethod
     def calculate_interest(principal: float, rate: float, years: int) -> float:
         """Utility method for interest calculation."""
         return principal * (1 + rate) ** years
+    
+    @property
+    def account_type(self) -> str:
+        """Property for account type."""
+        return self._account_type
+
+    @account_type.setter
+    def account_type(self, value: str):
+        # Optional: validate allowed types
+        allowed_types = {"Savings", "Checking", ""}
+        if value not in allowed_types:
+            raise ValueError(f"Invalid account type: {value}")
+        self._account_type = value

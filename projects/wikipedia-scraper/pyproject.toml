@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wikipedia-scraper"
+dynamic = ["version"]
+description = ""
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [{ name = "rgsuhas", email = "rgsuhas6364@gmail.com" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+dependencies = ["requests", "beautifulsoup4"]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-mock"]
+
+[project.urls]
+Documentation = "https://github.com/rgsuhas/wikipedia-scraper#readme"
+Issues = "https://github.com/rgsuhas/wikipedia-scraper/issues"
+Source = "https://github.com/rgsuhas/wikipedia-scraper"
+
+[tool.hatch.version]
+path = "src/wikipedia_scraper/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = ["mypy>=1.0.0"]
+
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/wikipedia_scraper tests}"
+
+[tool.coverage.run]
+source_pkgs = ["wikipedia_scraper", "tests"]
+branch = true
+parallel = true
+omit = ["src/wikipedia_scraper/__about__.py"]
+
+[tool.coverage.paths]
+wikipedia_scraper = [
+  "src/wikipedia_scraper",
+  "*/wikipedia-scraper/src/wikipedia_scraper",
+]
+tests = ["tests", "*/wikipedia-scraper/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]

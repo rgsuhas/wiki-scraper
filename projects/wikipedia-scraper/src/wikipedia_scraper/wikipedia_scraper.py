@@ -13,7 +13,7 @@ def fetch_wikipedia_html(name: str) -> str:
         response.raise_for_status()
         return response.text
     except requests.HTTPError as e:
-        if response.status_code == 404:
+        if response.status_code == 404: # type: ignore
             print(f"Person '{name}' not found on Wikipedia")
         else:
             print(f"HTTP error: {e}")
@@ -51,19 +51,17 @@ def parse_infobox(html: str):
         return {}
     
     data = {}
-    for row in infobox.find_all("tr"):
-        header = row.find("th")
-        value = row.find("td")
+    for row in infobox.find_all("tr"):  # type: ignore
+        header = row.find("th")  # type: ignore
+        value = row.find("td")  # type: ignore
         if header and value:
-            header_text = header.get_text(strip=True)
-            value_text = value.get_text(" ", strip=True)
+            header_text = header.get_text(strip=True)  # type: ignore
+            value_text = value.get_text(" ", strip=True)  # type: ignore
             if header_text and value_text:
                 data[header_text] = value_text
     
-    # Debug: print what we found
-    print(f"DEBUG: Found infobox fields: {list(data.keys())}")
-    
     return data
+    print(str(data))
 
 
 @dataclass
@@ -129,9 +127,9 @@ def main():
     try:
         person = build_person(html_content, args.name)
         
-        print("\n" + "="*50)
+        print("\n" + "="*100)
         print(f" {person.full_name}")
-        print("="*50)
+        print("="*100)
         
         if person.birth:
             print(f" Born: {person.birth}")
@@ -143,7 +141,7 @@ def main():
             print(f"\n Biography:")
             print(f"   {person.bio[:200]}{'...' if len(person.bio) > 200 else ''}")
         
-        print("="*50)
+        print("="*100)
         
     except Exception as e:
         print(f"Error processing data: {e}")

@@ -8,6 +8,7 @@ class DummyResponse:
     def raise_for_status(self):
         if self.status_code != 200:
             raise Exception("HTTP Error")
+        
 
 def test_fetch_success(monkeypatch):
     mock_html = "<html><h1 id='firstHeading'>Test Person</h1><p>Bio here</p></html>"
@@ -18,7 +19,7 @@ def test_fetch_success(monkeypatch):
 def test_fetch_404_error(monkeypatch):
     def mock_get_404(url, timeout=5):
         response = DummyResponse("", 404)
-        response.raise_for_status = lambda: Exception("404 Not Found")
+        response.raise_for_status = lambda: Exception("404 Not Found") # type: ignore
         return response
     
     monkeypatch.setattr("requests.get", mock_get_404)
